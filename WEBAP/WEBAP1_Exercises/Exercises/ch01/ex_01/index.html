@@ -1,48 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Exercise 1.1</title>
-    <link rel="stylesheet" href="../../../assets/exercise.css">
+    <link rel="stylesheet" href="../../../assets/exercise.css" />
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
-        $(document).ready(function()
-        {
-            // TODO: bind a click event to every button (b1 … b8)
-
-            // TODO: highlight the selected elements with css("background-color", "yellow")
-
-            // TODO: #reset removes all backgrounds
+      $(document).ready(function () {
+        $("#buttons [data-selector]").on("click", function () {
+          // clear();
+          $(this.dataset.selector).css("background-color", "yellow");
         });
+        $("#reset").on("click", reset);
+        function reset() {
+          $("#page *").css("background-color", "");
+        }
+      });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <h2>Exercise 1.1 – Selectors</h2>
     <div id="buttons">
-        <button id="b1">$("p")</button>
-        <button id="b2">$("#left")</button>
-        <button id="b3">$("#left p")</button>
-        <button id="b4">$(".special")</button>
-        <button id="b5">$("p.special")</button>
-        <button id="b6">$("div#right p.special")</button>
-        <button id="b7">$("#page p")</button>
-        <button id="b8">$("#page &gt; p")</button>
-        <button id="reset">Reset</button>
+      <button data-selector="p">$("p")</button>
+      <button data-selector="#left">$("#left")</button>
+      <button data-selector="#left p">$("#left p")</button>
+      <button data-selector=".special">$(".special")</button>
+      <button data-selector="p.special">$("p.special")</button>
+      <button data-selector="div#right p.special">
+        $("div#right p.special")
+      </button>
+      <button data-selector="#page p">$("#page p")</button>
+      <button data-selector="#page &gt; p">$("#page &gt; p")</button>
+      <button id="reset">Reset</button>
     </div>
-
     <div id="page">
-        <h1>Welcome</h1>
-        <div id="left">
-            <p>Paragraph A</p>
-            <p class="special">Paragraph B</p>
-        </div>
-        <div id="right">
-            <p class="special">Paragraph C</p>
-            <p>Paragraph D</p>
-        </div>
-        <div class="special">
-            <p>Paragraph E</p>
-        </div>
+      <h1>Welcome</h1>
+      <div id="left">
+        <p>Paragraph A</p>
+        <p class="special">Paragraph B</p>
+      </div>
+      <div id="right">
+        <p class="special">Paragraph C</p>
+        <p>Paragraph D</p>
+      </div>
+      <div class="special">
+        <p>Paragraph E</p>
+      </div>
     </div>
-</body>
+  </body>
 </html>
